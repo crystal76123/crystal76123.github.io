@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inside the Search Giant | Crystal Garcia</title>
+  <meta name="description" content="Text mining 14,702 Glassdoor employee reviews of Google to find what drives employee sentiment.">
+  <!-- "../../" means "go up two folders" to reach the main style.css -->
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="../../">Crystal Garcia</a>
+    <nav>
+      <a href="../../#about">About</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../#resume">Resume</a>
+      <a href="../../#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ TITLE ============ -->
+    <section class="project-hero">
+      <p class="eyebrow">Project &middot; Text Mining &amp; NLP</p>
+      <h1>Inside the Search Giant</h1>
+      <p class="tagline">
+        What do employees really say about working at Google? I analyzed 14,702 Glassdoor
+        reviews (2008–2021) to find the themes behind employee sentiment.
+      </p>
+      <p class="tools">Python &middot; pandas &middot; TF-IDF &middot; SBERT &middot; K-Means clustering &middot; GBA 6410, Summer 2026</p>
+    </section>
+
+    <!-- ============ APPROACH ============ -->
+    <section>
+      <h2>Approach</h2>
+      <p>
+        I cleaned and tokenized the review text, then compared two ways of representing it:
+        TF-IDF (word counts) and SBERT (sentence embeddings that capture meaning).
+        Using SBERT, I grouped the reviews into six themes with K-Means clustering,
+        then compared ratings across themes and over time.
+      </p>
+    </section>
+
+    <!-- ============ INSIGHTS ============ -->
+    <!-- To add another insight: copy one <figure> ... </figure> block -->
+    <section>
+      <h2>Key insights</h2>
+
+      <figure>
+        <img src="chart_3_subratings.png" alt="Average sub-ratings: compensation and benefits 4.41, culture and values 4.34, diversity and inclusion 4.32, career opportunities 4.08, work-life balance 4.08, senior management 3.93">
+        <figcaption><strong>1. Senior management is Google's weakest area.</strong> Employees rate pay and benefits highest (4.41) and senior management lowest (3.93) of all six areas.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="chart_1_management.png" alt="Line chart from 2008 to 2021: overall rating rises from about 4.0 to 4.45; senior management rating rises from about 3.6 to 4.09, staying below overall every year">
+        <figcaption><strong>2. The management gap is real, but shrinking.</strong> Senior management trailed the overall rating every year from 2008 to 2021. The gap held near half a point through 2019, then narrowed to 0.37 in 2020–21 as management ratings rose above 4.0.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="chart_2_low_ratings.png" alt="Share of 1 to 2 star reviews by theme: free food and office perks 8.2%, engineer experience 6.9%, pay benefits and work-life balance 4.9%, great company 3.6%, great place to work 3.4%, smart people scale and bureaucracy 3.2%">
+        <figcaption><strong>3. Perks don't make up for the work.</strong> Reviews that focus on free food and office perks have the most 1–2 star ratings (8.2%), more than twice the rate of the happiest themes.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ DATA ============ -->
+    <section>
+      <h2>Data</h2>
+      <p>
+        Glassdoor Job Reviews dataset (public domain, CC0), filtered to Google:
+        15,995 raw reviews, 14,702 after cleaning. No scraping was performed.
+      </p>
+    </section>
+
+    <!-- ============ SUMMARY ============ -->
+    <section>
+      <h2>Summary</h2>
+      <p>
+        Overall, Google employees are very positive. Reviews average 4.39 out of 5 stars, and pay and benefits
+        are the company's strongest area. The clearest weak spot is senior management, which ranked lowest
+        of six job areas and trailed the overall rating every year from 2008 to 2021. That gap began to close
+        in 2020–21, a trend worth watching. Reviews focused on free food and office perks carried the most
+        low ratings, which suggests perks alone don't drive satisfaction.
+      </p>
+      <p>
+        For an employer, the takeaway is to keep investing in leadership, since that is where employee
+        sentiment has the most room to grow. Methodologically, the project showed that sentence embeddings
+        (SBERT) make it possible to group thousands of free-text reviews into clear themes and to connect
+        what employees write with how they rate the company.
+      </p>
+    </section>
+
+    <p class="back"><a href="../../#projects">&larr; Back to all projects</a></p>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Crystal Garcia</p>
+  </footer>
+
+</body>
+</html>

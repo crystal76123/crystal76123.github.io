@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Strategy Backtest | Crystal Garcia</title>
+  <meta name="description" content="A Python backtest of a 50/200-day moving average crossover strategy against buy-and-hold for five large tech stocks.">
+  <!-- "../../" means "go up two folders" to reach the main style.css -->
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="../../">Crystal Garcia</a>
+    <nav>
+      <a href="../../#about">About</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../#resume">Resume</a>
+      <a href="../../#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ TITLE ============ -->
+    <section class="project-hero">
+      <p class="eyebrow">Project &middot; Python Backtesting</p>
+      <h1>Can a Simple Trading Rule Beat Buy-and-Hold?</h1>
+      <p class="tagline">
+        I built a Python backtest to see whether a rule-based moving average strategy could manage risk
+        better than simply buying and holding five major tech stocks from 2020 to 2024.
+      </p>
+      <p class="tools">Python &middot; pandas &middot; matplotlib &middot; yfinance &middot; GBA 6070 Programming Foundation for Business Analytics, Spring 2026</p>
+    </section>
+
+    <!-- ============ APPROACH ============ -->
+    <section>
+      <h2>Approach</h2>
+      <p>
+        Using daily adjusted prices from Yahoo Finance for AAPL, MSFT, AMZN, GOOGL and NVDA, I simulated
+        investing $10,000 in each stock from January 2020 to January 2024 two ways:
+      </p>
+      <ul>
+        <li><strong>Buy-and-hold:</strong> buy on day one and never sell.</li>
+        <li><strong>Moving average crossover:</strong> hold the stock when its 50-day average price is above its 200-day average (a "golden cross"), and move to cash when it falls below (a "death cross").</li>
+      </ul>
+      <p>
+        Signals were shifted by one day to avoid look-ahead bias. I compared total return, annualized return,
+        win rate and maximum drawdown (the largest drop from a peak).
+      </p>
+    </section>
+
+    <!-- ============ RESULTS ============ -->
+    <section>
+      <h2>Key results</h2>
+
+      <figure>
+        <img src="drawdown_comparison.png" alt="Maximum drawdown, buy and hold vs strategy: AAPL 31% vs 27%, MSFT 37% vs 19%, AMZN 56% vs 25%, GOOGL 44% vs 16%, NVDA 66% vs 36%">
+        <figcaption><strong>1. The strategy reduced risk on every stock.</strong> Its worst drop from a peak was smaller than buy-and-hold's for all five stocks. For AMZN it fell from 56% to 25%, and for GOOGL from 44% to 16%.</figcaption>
+      </figure>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Stock</th><th>Buy-and-hold total return</th><th>Strategy total return</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>AAPL</td><td>+163%</td><td>+39%</td></tr>
+            <tr><td>MSFT</td><td>+143%</td><td>+89%</td></tr>
+            <tr><td>AMZN</td><td>+60%</td><td>+3%</td></tr>
+            <tr><td>GOOGL</td><td>+104%</td><td><strong>+127%</strong></td></tr>
+            <tr><td>NVDA</td><td>+729%</td><td>+296%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption"><strong>2. But buy-and-hold usually earned more.</strong> Buy-and-hold had the higher total return on 4 of 5 stocks. Staying in cash during downturns also meant missing part of the recoveries.</p>
+
+      <figure>
+        <img src="googl_results.png" alt="GOOGL portfolio value 2020 to 2024: the strategy stays flat in cash through the 2022 decline and finishes above buy-and-hold, with a much smaller drawdown">
+        <figcaption><strong>3. GOOGL was the exception.</strong> The strategy moved to cash before GOOGL's 2022 decline and re-entered in 2023, finishing ahead of buy-and-hold (+127% vs. +104%) with a much smaller drawdown.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ SUMMARY ============ -->
+    <section>
+      <h2>Summary</h2>
+      <p>
+        The moving average crossover worked better for protecting capital than for maximizing returns. It cut the
+        worst losses on every stock tested, but in a strong bull market for tech, buy-and-hold usually came out
+        ahead. The strategy is best suited for investors who value a smoother ride and smaller losses over the
+        highest possible growth.
+      </p>
+      <p>
+        The backtest assumes no trading costs or taxes and covers a single four-year period, so real-world results
+        could differ.
+      </p>
+    </section>
+
+    <p class="back"><a href="../../#projects">&larr; Back to all projects</a></p>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Crystal Garcia</p>
+  </footer>
+
+</body>
+</html>

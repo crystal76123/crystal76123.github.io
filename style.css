@@ -126,6 +126,42 @@ a { color: var(--accent); }
 .card h3 { margin-top: 0; }
 .card p { color: var(--muted); }
 
+.card-img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+}
+
+/* ===========================================================
+   PROJECT PAGES
+   =========================================================== */
+.project-hero { padding: 70px 0 50px; }
+.project-hero h1 { font-size: clamp(2rem, 6vw, 3.2rem); margin: 4px 0 12px; }
+.tools { color: var(--muted); font-size: 0.95rem; margin: 0; }
+
+figure { margin: 0 0 44px; }
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+figcaption { margin-top: 12px; color: var(--muted); }
+figcaption strong { color: var(--text); }
+
+.back { padding: 32px 0 0; }
+
+/* Results tables on project pages */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { font-size: 0.9rem; color: var(--muted); font-weight: 600; }
+.caption { margin: 12px 0 44px; color: var(--muted); }
+.caption strong { color: var(--text); }
+
 /* ===========================================================
    RESUME TIMELINE
    =========================================================== */
