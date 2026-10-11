@@ -162,6 +162,12 @@ th { font-size: 0.9rem; color: var(--muted); font-weight: 600; }
 .caption { margin: 12px 0 44px; color: var(--muted); }
 .caption strong { color: var(--text); }
 
+/* Project files list */
+.files { padding-left: 20px; }
+.files a { font-weight: 600; }
+.files span { color: var(--muted); font-size: 0.9rem; }
+.note { color: var(--muted); font-size: 0.9rem; }
+
 /* ===========================================================
    RESUME TIMELINE
    =========================================================== */
