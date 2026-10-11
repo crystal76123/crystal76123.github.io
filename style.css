@@ -1,0 +1,152 @@
+/* ===========================================================
+   COLORS & FONTS: change these to restyle the whole site
+   =========================================================== */
+:root {
+  --bg: #fdfbf7;          /* page background */
+  --text: #1f1d1a;        /* main text */
+  --muted: #6b665e;       /* softer gray text */
+  --accent: #b5476b;      /* buttons & links (try #2f6fdb for blue) */
+  --card: #ffffff;        /* project card background */
+  --border: #e8e3da;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Automatic dark mode when the visitor's computer is in dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17161a;
+    --text: #f1eee9;
+    --muted: #a9a49c;
+    --accent: #e48aa8;
+    --card: #211f25;
+    --border: #34313a;
+  }
+}
+
+/* ===========================================================
+   BASICS
+   =========================================================== */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.6;
+}
+
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 60px; /* so the nav bar doesn't cover headings */
+}
+
+h1, h2, h3 { line-height: 1.2; }
+h2 { font-size: 1.75rem; margin-top: 0; }
+
+a { color: var(--accent); }
+
+/* ===========================================================
+   NAVIGATION BAR
+   =========================================================== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 20px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav nav a {
+  margin-left: 18px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav nav a:hover { color: var(--accent); }
+
+/* ===========================================================
+   HERO
+   =========================================================== */
+.hero { padding: 110px 0 90px; }
+.eyebrow { color: var(--accent); font-weight: 600; margin: 0; }
+.hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 4px 0 12px; }
+.tagline { font-size: 1.2rem; color: var(--muted); margin: 0 0 28px; }
+
+/* ===========================================================
+   BUTTONS
+   =========================================================== */
+.button {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.button.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+/* ===========================================================
+   PROJECT CARDS
+   =========================================================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+}
+.card h3 { margin-top: 0; }
+.card p { color: var(--muted); }
+
+/* ===========================================================
+   RESUME TIMELINE
+   =========================================================== */
+.timeline { margin-bottom: 28px; }
+.item {
+  border-left: 3px solid var(--accent);
+  padding: 0 0 18px 18px;
+}
+.item h3 { margin: 2px 0 4px; }
+.item p { margin: 0; color: var(--muted); }
+.when { font-size: 0.9rem; color: var(--muted); }
+
+/* ===========================================================
+   CONTACT & FOOTER
+   =========================================================== */
+.links { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 20px; }
+.links a { font-weight: 600; }
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 32px 20px;
+  font-size: 0.9rem;
+}
