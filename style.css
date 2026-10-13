@@ -58,6 +58,24 @@ a { color: var(--accent-blue); }
   padding: 5px 11px;
   color: var(--text);
   font-size: 0.95rem;
+  box-shadow: 0 0 7px rgba(255, 0, 255, 0.28);
+  animation: bubble-float 3.2s ease-in-out infinite;
+}
+.skill-tags li:nth-child(even) {
+  animation-delay: -1.6s;
+}
+@keyframes bubble-float {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 0 7px rgba(255, 0, 255, 0.28);
+  }
+  50% {
+    transform: translateY(-4px);
+    box-shadow: 0 0 14px rgba(255, 0, 255, 0.55);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skill-tags li { animation: none; }
 }
 
 /* ===========================================================
