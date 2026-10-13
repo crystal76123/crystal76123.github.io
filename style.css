@@ -5,7 +5,8 @@
   --bg: #17161a;          /* page background */
   --text: #f1eee9;        /* main text */
   --muted: #a9a49c;       /* softer text */
-  --accent-fuchsia: fuchsia;
+  --accent-hot-pink: hotpink;
+  --accent-orange: orange;
   --accent-blue: #66b3ff;
   --card: #211f25;        /* project card background */
   --border: #34313a;
@@ -53,12 +54,12 @@ a { color: var(--accent-blue); }
   padding: 0;
 }
 .skill-tags li {
-  border: 1px solid var(--accent-fuchsia);
+  border: 1px solid var(--accent-orange);
   border-radius: 7px;
   padding: 5px 11px;
   color: var(--text);
   font-size: 0.95rem;
-  box-shadow: 0 0 7px rgba(255, 0, 255, 0.28);
+  box-shadow: 0 0 7px rgba(255, 165, 0, 0.28);
 }
 
 /* ===========================================================
@@ -93,11 +94,11 @@ a { color: var(--accent-blue); }
    HERO
    =========================================================== */
 .hero { padding: 110px 0 90px; }
-.eyebrow { color: var(--accent-fuchsia); font-weight: 600; margin: 0; }
+.eyebrow { color: var(--accent-hot-pink); font-weight: 600; margin: 0; }
 .hero h1 {
   font-size: clamp(2.5rem, 8vw, 4.5rem);
   margin: 4px 0 12px;
-  text-shadow: 0 0 14px rgba(255, 0, 255, 0.32);
+  text-shadow: 0 0 14px rgba(255, 165, 0, 0.32);
 }
 .tagline { font-size: 1.2rem; color: var(--muted); margin: 0 0 28px; }
 
@@ -108,7 +109,7 @@ a { color: var(--accent-blue); }
   display: inline-block;
   padding: 12px 22px;
   border-radius: 999px;
-  background: var(--accent-fuchsia);
+  background: var(--accent-orange);
   color: var(--bg);
   text-decoration: none;
   font-weight: 600;
@@ -184,7 +185,7 @@ th { font-size: 0.9rem; color: var(--muted); font-weight: 600; }
    =========================================================== */
 .timeline { margin-bottom: 28px; }
 .item {
-  border-left: 3px solid var(--accent-fuchsia);
+  border-left: 3px solid var(--accent-hot-pink);
   padding: 0 0 18px 18px;
 }
 .item h3 { margin: 2px 0 4px; }
