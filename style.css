@@ -2,25 +2,14 @@
    COLORS & FONTS: change these to restyle the whole site
    =========================================================== */
 :root {
-  --bg: #fdfbf7;          /* page background */
-  --text: #1f1d1a;        /* main text */
-  --muted: #6b665e;       /* softer gray text */
-  --accent: #b5476b;      /* buttons & links (try #2f6fdb for blue) */
-  --card: #ffffff;        /* project card background */
-  --border: #e8e3da;
+  --bg: #17161a;          /* page background */
+  --text: #f1eee9;        /* main text */
+  --muted: #a9a49c;       /* softer text */
+  --accent-fuchsia: fuchsia;
+  --accent-blue: #66b3ff;
+  --card: #211f25;        /* project card background */
+  --border: #34313a;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-}
-
-/* Automatic dark mode when the visitor's computer is in dark mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #17161a;
-    --text: #f1eee9;
-    --muted: #a9a49c;
-    --accent: #e48aa8;
-    --card: #211f25;
-    --border: #34313a;
-  }
 }
 
 /* ===========================================================
@@ -53,7 +42,23 @@ section {
 h1, h2, h3 { line-height: 1.2; }
 h2 { font-size: 1.75rem; margin-top: 0; }
 
-a { color: var(--accent); }
+a { color: var(--accent-blue); }
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+}
+.skill-tags li {
+  border: 1px solid var(--accent-fuchsia);
+  border-radius: 7px;
+  padding: 5px 11px;
+  color: var(--text);
+  font-size: 0.95rem;
+}
 
 /* ===========================================================
    NAVIGATION BAR
@@ -81,13 +86,13 @@ a { color: var(--accent); }
   color: var(--muted);
   text-decoration: none;
 }
-.nav nav a:hover { color: var(--accent); }
+.nav nav a:hover { color: var(--accent-blue); }
 
 /* ===========================================================
    HERO
    =========================================================== */
 .hero { padding: 110px 0 90px; }
-.eyebrow { color: var(--accent); font-weight: 600; margin: 0; }
+.eyebrow { color: var(--accent-fuchsia); font-weight: 600; margin: 0; }
 .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 4px 0 12px; }
 .tagline { font-size: 1.2rem; color: var(--muted); margin: 0 0 28px; }
 
@@ -98,15 +103,16 @@ a { color: var(--accent); }
   display: inline-block;
   padding: 12px 22px;
   border-radius: 999px;
-  background: var(--accent);
-  color: #fff;
+  background: var(--accent-fuchsia);
+  color: var(--bg);
   text-decoration: none;
   font-weight: 600;
 }
+.hero .button { background: var(--accent-blue); }
 .button.secondary {
   background: transparent;
-  color: var(--accent);
-  border: 2px solid var(--accent);
+  color: var(--accent-blue);
+  border: 2px solid var(--accent-blue);
 }
 
 /* ===========================================================
@@ -173,7 +179,7 @@ th { font-size: 0.9rem; color: var(--muted); font-weight: 600; }
    =========================================================== */
 .timeline { margin-bottom: 28px; }
 .item {
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--accent-fuchsia);
   padding: 0 0 18px 18px;
 }
 .item h3 { margin: 2px 0 4px; }
