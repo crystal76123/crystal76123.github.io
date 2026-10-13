@@ -45,8 +45,10 @@
         <li><strong>Moving average crossover:</strong> hold the stock when its 50-day average price is above its 200-day average (a "golden cross"), and move to cash when it falls below (a "death cross").</li>
       </ul>
       <p>
-        Signals were shifted by one day to avoid look-ahead bias. I compared total return, annualized return,
-        win rate and maximum drawdown (the largest drop from a peak).
+        The 200-day average needs 200 trading days of history, so I downloaded 2019 prices as well. That way the
+        strategy follows its signal from the first trading day of 2020, instead of sitting in cash while its averages warm up.
+        Signals were shifted by one day to avoid look-ahead bias. I compared total return, annualized return
+        and maximum drawdown (the largest drop from a peak).
       </p>
     </section>
 
@@ -55,8 +57,8 @@
       <h2>Key results</h2>
 
       <figure>
-        <img src="drawdown_comparison.png" alt="Maximum drawdown, buy and hold vs strategy: AAPL 31% vs 27%, MSFT 37% vs 19%, AMZN 56% vs 25%, GOOGL 44% vs 16%, NVDA 66% vs 36%">
-        <figcaption><strong>1. The strategy reduced risk on every stock.</strong> Its worst drop from a peak was smaller than buy-and-hold's for all five stocks. For AMZN it fell from 56% to 25%, and for GOOGL from 44% to 16%.</figcaption>
+        <img src="drawdown_comparison.png" alt="Maximum drawdown, buy and hold vs strategy: AAPL 31% vs 31%, MSFT 37% vs 28%, AMZN 56% vs 25%, GOOGL 44% vs 31%, NVDA 66% vs 38%">
+        <figcaption><strong>1. The strategy cut the worst losses on 4 of 5 stocks.</strong> Its largest drop from a peak was smaller than buy-and-hold's for MSFT, AMZN, GOOGL and NVDA. For AMZN it fell from 56% to 25%, and for NVDA from 66% to 38%. AAPL was a tie at 31%.</figcaption>
       </figure>
 
       <div class="table-wrap">
@@ -65,19 +67,19 @@
             <tr><th>Stock</th><th>Buy-and-hold total return</th><th>Strategy total return</th></tr>
           </thead>
           <tbody>
-            <tr><td>AAPL</td><td>+163%</td><td>+39%</td></tr>
-            <tr><td>MSFT</td><td>+143%</td><td>+89%</td></tr>
-            <tr><td>AMZN</td><td>+60%</td><td>+3%</td></tr>
-            <tr><td>GOOGL</td><td>+104%</td><td><strong>+127%</strong></td></tr>
-            <tr><td>NVDA</td><td>+729%</td><td>+296%</td></tr>
+            <tr><td>AAPL</td><td><strong>+163%</strong></td><td>+124%</td></tr>
+            <tr><td>MSFT</td><td>+143%</td><td><strong>+160%</strong></td></tr>
+            <tr><td>AMZN</td><td>+60%</td><td><strong>+69%</strong></td></tr>
+            <tr><td>GOOGL</td><td>+104%</td><td><strong>+125%</strong></td></tr>
+            <tr><td>NVDA</td><td>+729%</td><td><strong>+824%</strong></td></tr>
           </tbody>
         </table>
       </div>
-      <p class="caption"><strong>2. But buy-and-hold usually earned more.</strong> Buy-and-hold had the higher total return on 4 of 5 stocks. Staying in cash during downturns also meant missing part of the recoveries.</p>
+      <p class="caption"><strong>2. It also earned more on 4 of 5 stocks.</strong> The strategy beat buy-and-hold's total return on MSFT, AMZN, GOOGL and NVDA. AAPL was the exception: the strategy sold in June 2022, bought back briefly in the fall, and did not re-enter for good until March 2023, missing part of AAPL's rebound.</p>
 
       <figure>
-        <img src="googl_results.png" alt="GOOGL portfolio value 2020 to 2024: the strategy stays flat in cash through the 2022 decline and finishes above buy-and-hold, with a much smaller drawdown">
-        <figcaption><strong>3. GOOGL was the exception.</strong> The strategy moved to cash before GOOGL's 2022 decline and re-entered in 2023, finishing ahead of buy-and-hold (+127% vs. +104%) with a much smaller drawdown.</figcaption>
+        <img src="nvda_results.png" alt="NVDA portfolio value 2020 to 2024: the strategy matches buy-and-hold until April 2022, stays flat in cash through the 2022 decline, re-enters in January 2023 and finishes above buy-and-hold">
+        <figcaption><strong>3. It sidestepped the slow 2022 decline, but not the sudden 2020 crash.</strong> The strategy moved to cash on all five stocks between January and June 2022 and re-entered in 2023, avoiding much of that year's tech sell-off (for NVDA, it sat out April 2022 to January 2023). But moving averages react slowly: in the March 2020 COVID crash the strategy fell as far as buy-and-hold, and that crash was its worst drop on AAPL, MSFT, GOOGL and NVDA.</figcaption>
       </figure>
     </section>
 
@@ -85,14 +87,22 @@
     <section>
       <h2>Summary</h2>
       <p>
-        The moving average crossover worked better for protecting capital than for maximizing returns. It cut the
-        worst losses on every stock tested, but in a strong bull market for tech, buy-and-hold usually came out
-        ahead. The strategy is best suited for investors who value a smoother ride and smaller losses over the
-        highest possible growth.
+        From 2020 to 2023, the moving average crossover improved both return and risk on four of the five stocks,
+        mainly by stepping aside during the long 2022 tech decline. Its weaknesses are speed and false signals:
+        it cannot protect against a sudden crash like March 2020, and on AAPL a brief false re-entry cost money
+        while its slow signal missed the start of the recovery.
       </p>
       <p>
-        The backtest assumes no trading costs or taxes and covers a single four-year period, so real-world results
-        could differ.
+        These results come from a single four-year period that included one long, gradual bear market, which is
+        the kind of market where trend-following rules do best. The five stocks are large tech companies that
+        performed well over this period. The backtest also assumes no trading costs or taxes (the strategy traded
+        only 2 to 5 times per stock) and no interest earned on cash, so real-world results could differ.
+      </p>
+      <p class="note">
+        Correction: an earlier version of this backtest started the 200-day average on January 1, 2020, which kept
+        the strategy in cash until October 2020. That made it look safer (it skipped the March 2020 crash) but
+        less profitable than it really was. The results above include 2019 price
+        history so both portfolios are compared fairly from the same start date.
       </p>
     </section>
 
@@ -100,7 +110,6 @@
     <section>
       <h2>Project files</h2>
       <ul class="files">
-        <li><a href="files/Stock_Backtest_Report_Crystal_Garcia.pdf">Full project report</a> <span>(PDF)</span></li>
         <li><a href="https://github.com/crystal76123/crystal76123.github.io/blob/main/projects/stock-backtest/files/stock_backtest.py">Backtesting code</a> <span>(Python)</span></li>
       </ul>
     </section>

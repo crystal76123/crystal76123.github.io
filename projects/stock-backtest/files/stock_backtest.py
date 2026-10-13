@@ -17,6 +17,11 @@ TICKERS = ["AAPL", "MSFT", "AMZN", "GOOGL", "NVDA"]
 START_DATE = "2020-01-01"
 END_DATE = "2024-01-01"
 
+# The 200-day average needs 200 trading days of history. Downloading 2019 as well means
+# the averages are ready on the first day of the test, so the strategy is not forced
+# to sit in cash for most of 2020 while buy-and-hold is invested.
+WARMUP_START = "2019-01-01"
+
 INITIAL_CAPITAL = 10000.0
 FAST_MA = 50
 SLOW_MA = 200
@@ -45,14 +50,15 @@ def calculate_metrics(cum_growth, daily_returns):
     days = (cum_growth.index[-1] - cum_growth.index[0]).days
     annualized_return = (cum_growth.iloc[-1] ** (365 / days) - 1) * 100
 
+    # Share of invested days (non-zero return) that ended with a gain
     active_days = daily_returns[daily_returns != 0]
-    win_rate = (active_days > 0).sum() / len(active_days) * 100 if len(active_days) > 0 else 0
+    positive_day_pct = (active_days > 0).sum() / len(active_days) * 100 if len(active_days) > 0 else 0
 
     peak = cum_growth.cummax()
     drawdown = (cum_growth - peak) / peak
     max_drawdown = drawdown.min() * 100
 
-    return total_return, annualized_return, win_rate, max_drawdown
+    return total_return, annualized_return, positive_day_pct, max_drawdown
 
 
 
@@ -72,6 +78,11 @@ def backtest(data, tickers):
         df["Position"] = df["Signal"].shift(1).fillna(0)
 
         df["Market_Return"] = df["Adj Close"].pct_change().fillna(0)
+
+        # Keep only the test period; both portfolios start with $10,000 on its first day
+        df = df[df.index >= START_DATE].copy()
+        df.iloc[0, df.columns.get_loc("Market_Return")] = 0
+
         df["Strategy_Return"] = df["Market_Return"] * df["Position"]
 
         df["Market_Growth"] = (1 + df["Market_Return"]).cumprod()
@@ -96,7 +107,7 @@ def backtest(data, tickers):
             "B&H Max DD %": round(m_dd, 2),
             "Strat Total %": round(s_tot, 2),
             "Strat Ann %": round(s_ann, 2),
-            "Strat Win Rate %": round(s_win, 2),
+            "Strat Positive Day %": round(s_win, 2),
             "Strat Max DD %": round(s_dd, 2)
         }
 
@@ -140,7 +151,7 @@ def create_plots(tickers):
 # Main
 
 def main():
-    data = download_data(TICKERS, START_DATE, END_DATE)
+    data = download_data(TICKERS, WARMUP_START, END_DATE)
 
     results = backtest(data, TICKERS)
 
